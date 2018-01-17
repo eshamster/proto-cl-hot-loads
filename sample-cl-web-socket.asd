@@ -15,10 +15,16 @@
   :license "MIT"
   :depends-on (:websocket-driver-server
                :websocket-driver-client
-               :clack)
+               :clack
+               :ningle
+               :cl-markup)
   :components ((:module "src"
+                :serial t
                 :components
-                ((:file "sample-cl-web-socket"))))
+                ((:file "ws-server")
+                 (:file "static-server")
+                 (:file "server")
+                 (:file "sample-cl-web-socket"))))
   :description "A sample of WebSocket in Common Lisp"
   :long-description
   #.(read-file-string
