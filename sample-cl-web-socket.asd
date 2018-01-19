@@ -17,7 +17,9 @@
                :websocket-driver-client
                :clack
                :ningle
-               :cl-markup)
+               :cl-markup
+               :cl-ppcre
+               :parenscript)
   :components ((:module "src"
                 :serial t
                 :components

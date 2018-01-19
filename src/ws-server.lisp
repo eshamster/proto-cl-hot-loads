@@ -29,9 +29,15 @@
   (lambda (env)
     (setf *server-instance* (make-server env))
     (on :message *server-instance*
-        (lambda (message)
-          (format t "~&Server got: ~A~%" message)
-          (send *server-instance* message)))
+        (lambda (ps-code)
+          (format t "~&Server got: ~A~%" ps-code)
+          (send *server-instance*
+                (handler-case
+                    (macroexpand `(ps:ps ,(read-from-string
+                                           (concatenate 'string "(progn " ps-code ")"))))
+                  (condition (e)
+                    (declare (ignore e))
+                    "alert(\"Compile Error!!\");")))))
     (lambda (responder)
       (declare (ignore responder))
       (format t "~&Server connected")
