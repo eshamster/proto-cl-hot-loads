@@ -1,14 +1,14 @@
 (defpackage sample-cl-web-socket.ws-server
   (:use :cl)
   (:export :*ws-app*
-           ;; The following are remained to try in REPL
            :start-ws-server
            :stop-ws-server
            :send-from-server
 
            :start-ws-client
            :stop-ws-client
-           :send-from-client)
+           :send-from-client
+           :ws-client-started-p)
   (:import-from :websocket-driver
                 :make-server
                 :on
@@ -62,6 +62,9 @@
 ;; --- client --- ;;
 
 (defvar *client-instance* nil)
+
+(defun ws-client-started-p ()
+  (not (null *client-instance*)))
 
 (defun start-ws-client (&key port)
   (assert port)
