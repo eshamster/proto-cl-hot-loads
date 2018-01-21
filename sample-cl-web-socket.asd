@@ -24,7 +24,8 @@
   :components ((:module "src"
                 :serial t
                 :components
-                ((:file "ws-server")
+                ((:file "compiler")
+                 (:file "ws-server")
                  (:file "static-server")
                  (:file "server")
                  (:file "utils")

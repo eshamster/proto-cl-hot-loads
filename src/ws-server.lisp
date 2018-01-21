@@ -9,6 +9,8 @@
            :stop-ws-client
            :send-from-client
            :ws-client-started-p)
+  (:import-from :sample-cl-web-socket.compiler
+                :compile-ps-string)
   (:import-from :websocket-driver
                 :make-server
                 :on
@@ -33,8 +35,7 @@
           (format t "~&Server got: ~A~%" ps-code)
           (send *server-instance*
                 (handler-case
-                    (macroexpand `(ps:ps ,(read-from-string
-                                           (concatenate 'string "(progn " ps-code ")"))))
+                    (compile-ps-string ps-code)
                   (condition (e)
                     (declare (ignore e))
                     "alert(\"Compile Error!!\");")))))

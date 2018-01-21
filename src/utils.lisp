@@ -1,5 +1,7 @@
 (defpackage sample-cl-web-socket.utils
   (:use :cl)
+  (:import-from :sample-cl-web-socket.compiler
+                :convert-ps-s-expr-to-str)
   (:import-from :sample-cl-web-socket.ws-server
                 :ws-client-started-p
                 :send-from-client))
@@ -7,7 +9,7 @@
 
 (defun send-ps-code (body)
   (when (ws-client-started-p)
-    (send-from-client (format nil "~W" `(progn ,@body)))))
+    (send-from-client (convert-ps-s-expr-to-str body))))
 
 (defstruct ps-def label def)
 (defstruct ps-def-manager lst last-updated)
