@@ -8,12 +8,18 @@
   (:import-from :sample-cl-web-socket.ws-server
                 :*ws-app*
                 :start-ws-client
-                :stop-ws-client))
+                :stop-ws-client)
+  (:import-from :sample-cl-web-socket.utils
+                :create-js-file-if-required))
 (in-package :sample-cl-web-socket.server)
 
 (defparameter *mv*
   (lambda (app)
     (lambda (env)
+      (create-js-file-if-required
+       (merge-pathnames "src/js/main.js"
+                        (asdf:component-pathname
+                         (asdf:find-system :sample-cl-web-socket))))
       (let ((uri (getf env :request-uri)))
         (if (string= uri "/ws")
             (funcall *ws-app* env)

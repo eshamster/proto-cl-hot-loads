@@ -19,16 +19,15 @@
                :ningle
                :cl-markup
                :cl-ppcre
-               :parenscript
-               :local-time)
+               :parenscript)
   :components ((:module "src"
                 :serial t
                 :components
                 ((:file "compiler")
                  (:file "ws-server")
                  (:file "static-server")
-                 (:file "server")
                  (:file "utils")
+                 (:file "server")
                  (:file "sample-cl-web-socket"))))
   :description "A sample of WebSocket in Common Lisp"
   :long-description
