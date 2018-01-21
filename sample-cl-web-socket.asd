@@ -19,7 +19,8 @@
                :ningle
                :cl-markup
                :cl-ppcre
-               :parenscript)
+               :parenscript
+               :local-time)
   :components ((:module "src"
                 :serial t
                 :components
