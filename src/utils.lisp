@@ -57,7 +57,14 @@
   `(with-hot-loads (:label ,var)
      (defvar ,var ,val ,doc)))
 
+(defmacro defonce.hl (var &optional val doc)
+  `(with-hot-loads (:label ,var)
+     (unless (eq (ps:typeof x) "undefined")
+       (defvar ,var ,val ,doc))))
+
 (defvar.hl x 888)
+
+(defonce.hl once 100)
 
 (defun.hl my-log (text)
   ((ps:@ console log) text))
