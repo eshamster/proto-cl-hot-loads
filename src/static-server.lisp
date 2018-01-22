@@ -16,7 +16,7 @@
           (let ((cl-markup:*output-stream* str))
             (html5 (:head
                     (:title "A sample of WebSocket on Common Lisp")
-                    (:script :src "js/sample.js" nil)
+                    (:script :src "js/hot_loads.js" nil)
                     (:script :src "js/main.js" nil))
                    (:body
                     (:div (:textarea :id "ps-code"
