@@ -1,17 +1,17 @@
-(defpackage sample-cl-web-socket.server
+(defpackage proto-cl-hot-loads.server
   (:use :cl)
   (:export :start
            :stop
            :server-started-p)
-  (:import-from :sample-cl-web-socket.static-server
+  (:import-from :proto-cl-hot-loads.static-server
                 :*static-app*)
-  (:import-from :sample-cl-web-socket.ws-server
+  (:import-from :proto-cl-hot-loads.ws-server
                 :*ws-app*
                 :start-ws-client
                 :stop-ws-client)
-  (:import-from :sample-cl-web-socket.utils
+  (:import-from :proto-cl-hot-loads.utils
                 :create-js-file-if-required))
-(in-package :sample-cl-web-socket.server)
+(in-package :proto-cl-hot-loads.server)
 
 (defparameter *mv*
   (lambda (app)
@@ -19,7 +19,7 @@
       (create-js-file-if-required
        (merge-pathnames "src/js/main.js"
                         (asdf:component-pathname
-                         (asdf:find-system :sample-cl-web-socket))))
+                         (asdf:find-system :proto-cl-hot-loads))))
       (let ((uri (getf env :request-uri)))
         (if (string= uri "/ws")
             (funcall *ws-app* env)

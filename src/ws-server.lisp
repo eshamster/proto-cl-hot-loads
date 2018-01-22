@@ -1,4 +1,4 @@
-(defpackage sample-cl-web-socket.ws-server
+(defpackage proto-cl-hot-loads.ws-server
   (:use :cl)
   (:export :*ws-app*
            :start-ws-server
@@ -9,7 +9,7 @@
            :stop-ws-client
            :send-from-client
            :ws-client-started-p)
-  (:import-from :sample-cl-web-socket.compiler
+  (:import-from :proto-cl-hot-loads.compiler
                 :compile-ps-string)
   (:import-from :websocket-driver
                 :make-server
@@ -21,7 +21,7 @@
   (:import-from :clack
                 :clackup
                 :stop))
-(in-package :sample-cl-web-socket.ws-server)
+(in-package :proto-cl-hot-loads.ws-server)
 
 ;; --- server --- ;;
 

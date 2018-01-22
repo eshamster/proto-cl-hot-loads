@@ -1,7 +1,7 @@
-(defpackage sample-cl-web-socket
+(defpackage proto-cl-hot-loads
   (:use :cl
-        :sample-cl-web-socket.ws-server
-        :sample-cl-web-socket.server)
+        :proto-cl-hot-loads.ws-server
+        :proto-cl-hot-loads.server)
   (:export :start
            :stop
 

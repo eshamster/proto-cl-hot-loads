@@ -1,13 +1,13 @@
-(defpackage sample-cl-web-socket.utils
+(defpackage proto-cl-hot-loads.utils
   (:use :cl)
   (:export :create-js-file-if-required)
-  (:import-from :sample-cl-web-socket.compiler
+  (:import-from :proto-cl-hot-loads.compiler
                 :convert-ps-s-expr-to-str
                 :compile-ps-s-expr)
-  (:import-from :sample-cl-web-socket.ws-server
+  (:import-from :proto-cl-hot-loads.ws-server
                 :ws-client-started-p
                 :send-from-client))
-(in-package :sample-cl-web-socket.utils)
+(in-package :proto-cl-hot-loads.utils)
 
 (defun send-ps-code (body)
   (when (ws-client-started-p)

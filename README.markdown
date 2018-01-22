@@ -1,4 +1,4 @@
-# Sample-Cl-Web-Socket - A sample of WebSocket in Common Lisp
+# Proto-Cl-Hot-Loads - A prototype of hot loads in Common Lisp using WebSocket
 
 ## Usage
 

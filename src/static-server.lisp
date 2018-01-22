@@ -1,11 +1,11 @@
-(defpackage sample-cl-web-socket.static-server
+(defpackage proto-cl-hot-loads.static-server
   (:use :cl
         :cl-markup)
   (:export *static-app*)
-  (:import-from :sample-cl-web-socket.ws-server
+  (:import-from :proto-cl-hot-loads.ws-server
                 :start-ws-server
                 :stop-ws-server))
-(in-package :sample-cl-web-socket.static-server)
+(in-package :proto-cl-hot-loads.static-server)
 
 (defvar *ningle-app* (make-instance 'ningle:<app>))
 
@@ -33,5 +33,5 @@
                         nil))
             :root (merge-pathnames "src/"
                                    (asdf:component-pathname
-                                    (asdf:find-system :sample-cl-web-socket))))
+                                    (asdf:find-system :proto-cl-hot-loads))))
    *ningle-app*))

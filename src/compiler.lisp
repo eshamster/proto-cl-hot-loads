@@ -1,9 +1,9 @@
-(defpackage sample-cl-web-socket.compiler
+(defpackage proto-cl-hot-loads.compiler
   (:use :cl)
   (:export :compile-ps-string
            :convert-ps-s-expr-to-str
            :compile-ps-s-expr))
-(in-package :sample-cl-web-socket.compiler)
+(in-package :proto-cl-hot-loads.compiler)
 
 ;; "((defvar x 100) (incf x))"
 (defun compile-ps-string (str-code)
