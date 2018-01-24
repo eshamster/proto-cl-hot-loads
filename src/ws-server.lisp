@@ -25,24 +25,26 @@
 
 ;; --- server --- ;;
 
-(defvar *server-instance* nil)
+;; TODO: Remove from list when socket closed
+(defvar *server-instance-list* nil)
 
 (defparameter *ws-app*
   (lambda (env)
-    (setf *server-instance* (make-server env))
-    (on :message *server-instance*
-        (lambda (ps-code)
-          (format t "~&Server got: ~A~%" ps-code)
-          (send *server-instance*
-                (handler-case
-                    (compile-ps-string ps-code)
-                  (condition (e)
-                    (declare (ignore e))
-                    "alert(\"Compile Error!!\");")))))
-    (lambda (responder)
-      (declare (ignore responder))
-      (format t "~&Server connected")
-      (start-connection *server-instance*))))
+    (let ((server (make-server env)))
+      (push server *server-instance-list*)
+      (on :message server
+          (lambda (ps-code)
+            (format t "~&Server got: ~A~%" ps-code)
+            (send-from-server
+             (handler-case
+                 (compile-ps-string ps-code)
+               (condition (e)
+                 (declare (ignore e))
+                 "alert(\"Compile Error!!\");")))))
+      (lambda (responder)
+        (declare (ignore responder))
+        (format t "~&Server connected")
+        (start-connection server)))))
 
 (defvar *ws-server* nil)
 
@@ -58,7 +60,8 @@
     (setf *ws-server* nil)))
 
 (defun send-from-server (message)
-  (send *server-instance* message))
+  (dolist (server *server-instance-list*)
+    (send server message)))
 
 ;; --- client --- ;;
 
