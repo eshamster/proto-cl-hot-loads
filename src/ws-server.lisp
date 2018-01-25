@@ -17,7 +17,8 @@
                 :send
                 :start-connection
                 :close-connection
-                :make-client)
+                :make-client
+                :ready-state)
   (:import-from :clack
                 :clackup
                 :stop))
@@ -25,7 +26,6 @@
 
 ;; --- server --- ;;
 
-;; TODO: Remove from list when socket closed
 (defvar *server-instance-list* nil)
 
 (defparameter *ws-app*
@@ -60,8 +60,12 @@
     (setf *ws-server* nil)))
 
 (defun send-from-server (message)
-  (dolist (server *server-instance-list*)
-    (send server message)))
+  (dolist (server (copy-list *server-instance-list*))
+    (case (ready-state server)
+      (:open (send server message))
+      (:closed (setf *server-instance-list* (remove server *server-instance-list*)))
+      ;; otherwise do nothing
+      )))
 
 ;; --- client --- ;;
 
