@@ -1,8 +1,6 @@
 (defpackage proto-cl-hot-loads.ws-server
   (:use :cl)
   (:export :*ws-app*
-           :start-ws-server
-           :stop-ws-server
            :send-from-server
 
            :start-ws-client
@@ -45,19 +43,6 @@
         (declare (ignore responder))
         (format t "~&Server connected")
         (start-connection server)))))
-
-(defvar *ws-server* nil)
-
-(defun start-ws-server (&key port)
-  (assert port)
-  (stop-ws-server)
-  (setf *ws-server*
-        (clackup *ws-app* :port port)))
-
-(defun stop-ws-server ()
-  (when *ws-server*
-    (stop *ws-server*)
-    (setf *ws-server* nil)))
 
 (defun send-from-server (message)
   (dolist (server (copy-list *server-instance-list*))

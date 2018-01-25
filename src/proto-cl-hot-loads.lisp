@@ -5,8 +5,6 @@
   (:export :start
            :stop
 
-           :start-ws-server 
-           :stop-ws-server
            :send-from-server
 
            :start-ws-client
