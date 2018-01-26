@@ -27,6 +27,7 @@
                  (:file "ws-server")
                  (:file "static-server")
                  (:file "utils")
+                 (:file "middleware")
                  (:file "server")
                  (:file "proto-cl-hot-loads"))))
   :description "A sample of WebSocket in Common Lisp"

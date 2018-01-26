@@ -6,24 +6,11 @@
   (:import-from :proto-cl-hot-loads.static-server
                 :*static-app*)
   (:import-from :proto-cl-hot-loads.ws-server
-                :*ws-app*
                 :start-ws-client
                 :stop-ws-client)
-  (:import-from :proto-cl-hot-loads.utils
-                :create-js-file-if-required))
+  (:import-from :proto-cl-hot-loads.middleware
+                :make-hot-load-middleware))
 (in-package :proto-cl-hot-loads.server)
-
-(defparameter *mv*
-  (lambda (app)
-    (lambda (env)
-      (create-js-file-if-required
-       (merge-pathnames "src/js/main.js"
-                        (asdf:component-pathname
-                         (asdf:find-system :proto-cl-hot-loads))))
-      (let ((uri (getf env :request-uri)))
-        (if (string= uri "/ws")
-            (funcall *ws-app* env)
-            (funcall app env))))))
 
 (defvar *server* nil)
 (defvar *port* nil)
@@ -36,7 +23,14 @@
   (setf *port* port
         *server*
         (clack:clackup
-         (lack:builder *mv* *static-app*)
+         (lack:builder
+          (make-hot-load-middleware
+           :main-js-path (merge-pathnames
+                          "src/js/main.js"
+                          (asdf:component-pathname
+                           (asdf:find-system :proto-cl-hot-loads)))
+           :string-url "/ws")
+          *static-app*)
          :port port))
   (start-ws-client :port port))
 
