@@ -5,8 +5,4 @@
   (:export :start
            :stop
 
-           :send-from-server
-
-           :start-ws-client
-           :stop-ws-client
-           :send-from-client))
+           :send-from-server))

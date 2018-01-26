@@ -5,9 +5,6 @@
            :server-started-p)
   (:import-from :proto-cl-hot-loads.static-server
                 :*static-app*)
-  (:import-from :proto-cl-hot-loads.ws-server
-                :start-ws-client
-                :stop-ws-client)
   (:import-from :proto-cl-hot-loads.middleware
                 :make-hot-load-middleware))
 (in-package :proto-cl-hot-loads.server)
@@ -31,12 +28,10 @@
                            (asdf:find-system :proto-cl-hot-loads)))
            :string-url "/ws")
           *static-app*)
-         :port port))
-  (start-ws-client :port port))
+         :port port)))
 
 (defun stop ()
   (when *server*
-    (stop-ws-client)
     (clack:stop *server*)
     (setf *server* nil
           *port* nil)))

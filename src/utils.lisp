@@ -5,13 +5,11 @@
                 :convert-ps-s-expr-to-str
                 :compile-ps-s-expr)
   (:import-from :proto-cl-hot-loads.ws-server
-                :ws-client-started-p
-                :send-from-client))
+                :send-from-server))
 (in-package :proto-cl-hot-loads.utils)
 
 (defun send-ps-code (body)
-  (when (ws-client-started-p)
-    (send-from-client (convert-ps-s-expr-to-str body))))
+  (send-from-server (convert-ps-s-expr-to-str body)))
 
 (defstruct ps-def label def)
 (defstruct ps-def-manager lst last-updated)
