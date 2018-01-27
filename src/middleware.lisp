@@ -3,7 +3,7 @@
   (:export :make-hot-load-middleware)
   (:import-from :proto-cl-hot-loads.ws-server
                 :*ws-app*)
-  (:import-from :proto-cl-hot-loads.utils
+  (:import-from :proto-cl-hot-loads.defines
                 :create-js-file-if-required))
 (in-package :proto-cl-hot-loads.middleware)
 

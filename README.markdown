@@ -23,7 +23,7 @@ CL-USER> (ql:quickload :proto-cl-hot-loads)
 CL-USER> (proto-cl-hot-loads:start :port 5000)
 ```
 
-After accessing, you can try hot loads using `defvar.hl`, `defun.hl`, `defonce.hl`, and `with-hot-loads` in `src/utils.lisp` (or in the package `proto-cl-hot-loads.utils`).
+After accessing, you can try hot loads using `defvar.hl`, `defun.hl`, `defonce.hl`, and `with-hot-loads` in `src/playground.lisp` (or use the package `proto-cl-hot-loads.defines`).
 
 (Because this project is only a prototype, the interface is not so considered...)
 
@@ -63,7 +63,7 @@ The `with-hot-loads` is a basic macro of `defxxx.hl` macros. For example, when e
 
 Finally, the defined symbols (labels) by `with-hot-loads` are output as JavaScript code to `src/_js/main.js` when accessed from browser. 
 
-For example, the following are defined in `src/utils.lisp` in default.
+For example, the following are defined in `src/playground.lisp` in default.
 
 ```lisp
 (defvar.hl x 888)

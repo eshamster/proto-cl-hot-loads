@@ -1,12 +1,16 @@
-(defpackage proto-cl-hot-loads.utils
+(defpackage proto-cl-hot-loads.defines
   (:use :cl)
-  (:export :create-js-file-if-required)
+  (:export :create-js-file-if-required
+           :defun.hl
+           :defvar.hl
+           :defonce.hl
+           :with-hot-loads)
   (:import-from :proto-cl-hot-loads.compiler
                 :convert-ps-s-expr-to-str
                 :compile-ps-s-expr)
   (:import-from :proto-cl-hot-loads.ws-server
                 :send-from-server))
-(in-package :proto-cl-hot-loads.utils)
+(in-package :proto-cl-hot-loads.defines)
 
 (defun send-ps-code (body)
   (send-from-server (convert-ps-s-expr-to-str body)))
@@ -59,13 +63,3 @@
   `(with-hot-loads (:label ,var)
      (unless (eq (ps:typeof x) "undefined")
        (defvar ,var ,val ,doc))))
-
-(defvar.hl x 888)
-
-(defonce.hl once 100)
-
-(defun.hl my-log (text)
-  ((ps:@ console log) text))
-
-(with-hot-loads (:label sample)
-  (my-log (+ x ": Hello Hot Loading!!")))

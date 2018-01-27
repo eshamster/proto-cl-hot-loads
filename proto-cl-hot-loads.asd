@@ -25,10 +25,11 @@
                 :components
                 ((:file "compiler")
                  (:file "ws-server")
-                 (:file "static-server")
-                 (:file "utils")
+                 (:file "defines")
                  (:file "middleware")
+                 (:file "static-server")
                  (:file "server")
+                 (:file "playground")
                  (:file "proto-cl-hot-loads"))))
   :description "A sample of WebSocket in Common Lisp"
   :long-description
