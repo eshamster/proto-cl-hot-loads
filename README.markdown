@@ -12,7 +12,10 @@ When evaluating Common Lisp subset code for client,
 
 ## Demo
 
-WIP
+The left of the screen is browser and the right is editor (Emacs + SLIME).
+When evaluating Parenscript code in the editor, the result is immediately reflected to the browser without reloading.
+
+![Demo of hot loads](https://raw.githubusercontent.com/wiki/eshamster/proto-cl-hot-loads/images/hot_loads_demo.gif)
 
 ## Installation and Usage
 
