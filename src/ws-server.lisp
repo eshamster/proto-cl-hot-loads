@@ -9,12 +9,7 @@
                 :on
                 :send
                 :start-connection
-                :close-connection
-                :make-client
-                :ready-state)
-  (:import-from :clack
-                :clackup
-                :stop))
+                :ready-state))
 (in-package :proto-cl-hot-loads.ws-server)
 
 ;; --- server --- ;;
