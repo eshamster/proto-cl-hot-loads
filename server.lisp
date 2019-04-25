@@ -1,13 +1,14 @@
-(defpackage proto-cl-hot-loads.server
+(defpackage proto-cl-hot-loads/server
   (:use :cl)
+  (:nicknames :proto-cl-hot-loads)
   (:export :start
            :stop
            :server-started-p)
-  (:import-from :proto-cl-hot-loads.static-server
+  (:import-from :proto-cl-hot-loads/static-server
                 :*static-app*)
-  (:import-from :proto-cl-hot-loads.middleware
+  (:import-from :proto-cl-hot-loads/middleware
                 :make-hot-load-middleware))
-(in-package :proto-cl-hot-loads.server)
+(in-package :proto-cl-hot-loads/server)
 
 (defvar *server* nil)
 (defvar *port* nil)

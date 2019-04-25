@@ -1,16 +1,16 @@
-(defpackage proto-cl-hot-loads.defines
+(defpackage proto-cl-hot-loads/defines
   (:use :cl)
   (:export :create-js-file-if-required
            :defun.hl
            :defvar.hl
            :defonce.hl
            :with-hot-loads)
-  (:import-from :proto-cl-hot-loads.compiler
+  (:import-from :proto-cl-hot-loads/compiler
                 :convert-ps-s-expr-to-str
                 :compile-ps-s-expr)
-  (:import-from :proto-cl-hot-loads.ws-server
+  (:import-from :proto-cl-hot-loads/ws-server
                 :send-from-server))
-(in-package :proto-cl-hot-loads.defines)
+(in-package :proto-cl-hot-loads/defines)
 
 (defun send-ps-code (body)
   (send-from-server (convert-ps-s-expr-to-str body)))

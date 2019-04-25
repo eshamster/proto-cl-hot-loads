@@ -1,8 +1,8 @@
-(defpackage proto-cl-hot-loads.static-server
+(defpackage proto-cl-hot-loads/static-server
   (:use :cl
         :cl-markup)
   (:export *static-app*))
-(in-package :proto-cl-hot-loads.static-server)
+(in-package :proto-cl-hot-loads/static-server)
 
 (defvar *ningle-app* (make-instance 'ningle:<app>))
 

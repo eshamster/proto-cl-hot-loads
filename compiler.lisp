@@ -1,9 +1,9 @@
-(defpackage proto-cl-hot-loads.compiler
+(defpackage proto-cl-hot-loads/compiler
   (:use :cl)
   (:export :compile-ps-string
            :convert-ps-s-expr-to-str
            :compile-ps-s-expr))
-(in-package :proto-cl-hot-loads.compiler)
+(in-package :proto-cl-hot-loads/compiler)
 
 ;; "((defvar x 100) (incf x))"
 (defun compile-ps-string (str-code)

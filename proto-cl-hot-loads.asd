@@ -12,6 +12,8 @@
 (defsystem "proto-cl-hot-loads"
   :version "0.1.0"
   :author "eshamster"
+  :class :package-inferred-system
+  :defsystem-depends-on (:asdf-package-system)
   :license "MIT"
   :depends-on (:websocket-driver-server
                :websocket-driver-client
@@ -19,18 +21,9 @@
                :ningle
                :cl-markup
                :cl-ppcre
-               :parenscript)
-  :components ((:module "src"
-                :serial t
-                :components
-                ((:file "compiler")
-                 (:file "ws-server")
-                 (:file "defines")
-                 (:file "middleware")
-                 (:file "static-server")
-                 (:file "server")
-                 (:file "playground")
-                 (:file "proto-cl-hot-loads"))))
+               :parenscript
+               :proto-cl-hot-loads/server
+               :proto-cl-hot-loads/playground)
   :description "A sample of WebSocket in Common Lisp"
   :long-description
   #.(read-file-string

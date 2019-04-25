@@ -1,11 +1,11 @@
-(defpackage proto-cl-hot-loads.middleware
+(defpackage proto-cl-hot-loads/middleware
   (:use :cl)
   (:export :make-hot-load-middleware)
-  (:import-from :proto-cl-hot-loads.ws-server
+  (:import-from :proto-cl-hot-loads/ws-server
                 :*ws-app*)
-  (:import-from :proto-cl-hot-loads.defines
+  (:import-from :proto-cl-hot-loads/defines
                 :create-js-file-if-required))
-(in-package :proto-cl-hot-loads.middleware)
+(in-package :proto-cl-hot-loads/middleware)
 
 (defun make-hot-load-middleware (&key main-js-path string-url)
   (lambda (app)

@@ -6,4 +6,4 @@
 *.x86f
 *~
 .#*
-src/js/main.js
+js/main.js

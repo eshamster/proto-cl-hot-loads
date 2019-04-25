@@ -1,8 +1,8 @@
-(defpackage proto-cl-hot-loads.ws-server
+(defpackage proto-cl-hot-loads/ws-server
   (:use :cl)
   (:export :*ws-app*
            :send-from-server)
-  (:import-from :proto-cl-hot-loads.compiler
+  (:import-from :proto-cl-hot-loads/compiler
                 :compile-ps-string)
   (:import-from :websocket-driver
                 :make-server
@@ -10,7 +10,7 @@
                 :send
                 :start-connection
                 :ready-state))
-(in-package :proto-cl-hot-loads.ws-server)
+(in-package :proto-cl-hot-loads/ws-server)
 
 ;; --- server --- ;;
 

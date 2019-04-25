@@ -1,7 +1,7 @@
-(defpackage proto-cl-hot-loads.playground
+(defpackage proto-cl-hot-loads/playground
   (:use :cl
-        :proto-cl-hot-loads.defines))
-(in-package :proto-cl-hot-loads.playground)
+        :proto-cl-hot-loads/defines))
+(in-package :proto-cl-hot-loads/playground)
 
 (defvar.hl x 888)
 
