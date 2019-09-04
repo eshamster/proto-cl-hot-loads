@@ -1,6 +1,5 @@
 (defpackage proto-cl-hot-loads/server
   (:use :cl)
-  (:nicknames :proto-cl-hot-loads)
   (:export :start
            :stop
            :server-started-p)
@@ -16,7 +15,7 @@
 (defun server-started-p ()
   (not (null *server*)))
 
-(defun start (&key (port 5000))
+(defun start (&key (port 5000) (address "0.0.0.0"))
   (stop)
   (setf *port* port
         *server*
@@ -29,7 +28,8 @@
                            (asdf:find-system :proto-cl-hot-loads)))
            :string-url "/ws")
           *static-app*)
-         :port port)))
+         :port port
+         :address address)))
 
 (defun stop ()
   (when *server*

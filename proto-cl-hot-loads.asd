@@ -22,7 +22,7 @@
                :cl-markup
                :cl-ppcre
                :parenscript
-               :proto-cl-hot-loads/server
+               :proto-cl-hot-loads/main
                :proto-cl-hot-loads/playground)
   :description "A sample of WebSocket in Common Lisp"
   :long-description
